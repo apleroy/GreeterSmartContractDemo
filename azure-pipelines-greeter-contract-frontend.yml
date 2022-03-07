@@ -17,7 +17,7 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- task: DownloadStageVariables
+- task: DownloadSecureFile@1
   name: stageVariables
   displayName: 'download stage variables'
   inputs:
