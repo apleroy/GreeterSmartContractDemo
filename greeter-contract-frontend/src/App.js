@@ -1,11 +1,11 @@
-import HelloWorld from './HelloWorld'
+import Greeter from './Greeter'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <p>{process.env.REACT_APP_API_END_POINT}</p>
-    <HelloWorld></HelloWorld>
+    <Greeter></Greeter>
     </div>
   );
 }

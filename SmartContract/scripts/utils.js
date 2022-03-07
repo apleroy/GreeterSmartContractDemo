@@ -1,15 +1,15 @@
 module.exports = {
 
-    interact: async function (helloWorldContract, updateMessage) {
-        const message = await helloWorldContract.greet();
-        console.log("The message is: " + message); 
+    interact: async function (contract, updateMessage) {
+        const greeting = await contract.getGreeting();
+        console.log("The current greeting is: " + greeting); 
 
-        console.log("Updating the message...");
-        const tx = await helloWorldContract.setGreeting(updateMessage);
+        console.log("Updating the greeting...");
+        const tx = await contract.setGreeting(updateMessage);
         await tx.wait();
 
-        const newMessage = await helloWorldContract.greet();
-        console.log("The new message is: " + newMessage); 
+        const newGreeting = await contract.getGreeting();
+        console.log("The new greeting is: " + newGreeting); 
     },
 
     estimateGas: async function (provider, contract) {

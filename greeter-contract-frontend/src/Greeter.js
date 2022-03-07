@@ -1,16 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {
-  helloWorldContract,
+  greeterContract,
   connectWallet,
-  updateMessage,
-  loadCurrentMessage,
+  setGreeting,
+  getGreeting,
   getCurrentWalletConnected,
 } from "./util/interact.js";
 
 import alchemylogo from "./alchemylogo.svg";
 
-const HelloWorld = () => {
+const Greeter = () => {
+
   //state variables
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
@@ -19,7 +20,7 @@ const HelloWorld = () => {
 
   //called only once
   useEffect(async () => {
-    const message = await loadCurrentMessage();
+    const message = await getGreeting();
     setMessage(message);
     addSmartContractListener();
 
@@ -32,7 +33,7 @@ const HelloWorld = () => {
   }, []);
 
   function addSmartContractListener() {
-    helloWorldContract.events.UpdatedMessages({}, (error, data) => {
+    greeterContract.events.GreetingUpdate({}, (error, data) => {
       if (error) {
         setStatus("😥 " + error.message);
       } else {
@@ -75,7 +76,7 @@ const HelloWorld = () => {
   };
 
   const onUpdatePressed = async () => {
-    const { status } = await updateMessage(walletAddress, newMessage);
+    const { status } = await setGreeting(walletAddress, newMessage);
     setStatus(status);
   };
 
@@ -116,4 +117,4 @@ const HelloWorld = () => {
   );
 };
 
-export default HelloWorld;
+export default Greeter;
