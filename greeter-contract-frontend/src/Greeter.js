@@ -6,7 +6,7 @@ import {
   setGreeting,
   getGreeting,
   getCurrentWalletConnected,
-} from "./util/interact.js";
+} from "./controllers/interact.js";
 
 import alchemylogo from "./alchemylogo.svg";
 

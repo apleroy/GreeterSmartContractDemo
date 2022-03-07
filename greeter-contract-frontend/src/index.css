@@ -19,18 +19,17 @@ body {
   
   #container {
     width: 80vh;
-   border: 4px dashed rgba(4, 4, 5, 0.1);
-      min-height: 140px;
-      padding: 32px;
-      position: relative;
-      border-radius: 16px;
-      -webkit-box-align: center;
-      align-items: left;
-      -webkit-box-pack: center;
-      justify-content: left;
-      flex-direction: column;
-      text-align:left;
-      word-break: break-word;
+    border: 4px dashed rgba(4, 4, 5, 0.1);
+    padding: 20px;
+    position: relative;
+    border-radius: 16px;
+    -webkit-box-align: center;
+    align-items: left;
+    -webkit-box-pack: center;
+    justify-content: left;
+    flex-direction: column;
+    text-align:left;
+    word-break: break-word;
   }
   
   input {
