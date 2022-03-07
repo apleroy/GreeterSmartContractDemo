@@ -16,7 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    dir greeter-contract-frontend
     npm install
     npm run build:stage
   displayName: 'npm install and build'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/greeter-contract-frontend'
