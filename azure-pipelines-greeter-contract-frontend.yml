@@ -9,7 +9,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-
+variables:
+  directory: greeter-contract-frontend
+  serviceConnection: dappsmartcontractstage
+  appServiceName: andysmartcontractdappstage
 
 steps:
 - task: NodeTool@0
@@ -27,15 +30,37 @@ steps:
     echo Installing $(stageVariables.secureFilePath) to the working directory...
     sudo chown root:root $(stageVariables.secureFilePath)
     sudo chmod a+r $(stageVariables.secureFilePath)
-    sudo ln -s -t $(System.DefaultWorkingDirectory)/greeter-contract-frontend $(stageVariables.secureFilePath)
+    sudo ln -s -t $(System.DefaultWorkingDirectory)/$(directory) $(stageVariables.secureFilePath)
     npm install
     npm run build:stage
   displayName: 'npm install and build'
-  workingDirectory: '$(System.DefaultWorkingDirectory)/greeter-contract-frontend'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/$(directory)'
 
+- task: CopyFiles@2
+  displayName: 'Copy files'
+  inputs:
+    sourceFolder: '$(directory)/build' 
+    Contents: '**/*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    cleanTargetFolder: true
+ 
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    replaceExistingArchive: true
+ 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Build Artifacts'
+  inputs: 
+    pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'dappsmartcontractstage'
-    appName: 'andysmartcontractdappstage'
-    package: $(System.DefaultWorkingDirectory)/greeter-contract-frontend/**/*.zip    
+    azureSubscription: '$(serviceConnection)'
+    appName: '$(appServiceName)'
+    appType: 'webApp'
+    package: '$(System.ArtifactsDirectory)/$(Build.BuildId).zip'    
