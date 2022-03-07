@@ -32,3 +32,10 @@ steps:
     npm run build:stage
   displayName: 'npm install and build'
   workingDirectory: '$(System.DefaultWorkingDirectory)/greeter-contract-frontend'
+
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'dappsmartcontractstage'
+    appName: 'andysmartcontractdappstage'
+    package: $(System.DefaultWorkingDirectory)/greeter-contract-frontend/**/*.zip    
