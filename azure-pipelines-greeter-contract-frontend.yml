@@ -24,6 +24,10 @@ steps:
     secureFile: '.stage.env'
 
 - script: |
+    echo Installing $(stageVariables.secureFilePath) to the working directory...
+    sudo chown root:root $(stageVariables.secureFilePath)
+    sudo chmod a+r $(stageVariables.secureFilePath)
+    sudo ln -s -t / $(stageVariables.secureFilePath)
     npm install
     npm run build:stage
   displayName: 'npm install and build'
