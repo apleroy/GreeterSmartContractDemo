@@ -19,10 +19,10 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "start:stage": "env-cmd -f ./environments/.stage.env react-scripts start",
-        "build:stage": "env-cmd -f ./environments/.stage.env npm run-script build",
-        "start:prod": "env-cmd -f ./environments/.prod.env react-scripts start",
-        "build:prod": "env-cmd -f ./environments/.prod.env npm run-script build"
+        "start:stage": "env-cmd -f .stage.env react-scripts start",
+        "build:stage": "env-cmd -f .stage.env npm run-script build",
+        "start:prod": "env-cmd -f .prod.env react-scripts start",
+        "build:prod": "env-cmd -f .prod.env npm run-script build"
     },
     "eslintConfig": {
         "extends": [
