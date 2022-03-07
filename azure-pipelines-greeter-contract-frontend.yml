@@ -39,7 +39,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy files'
   inputs:
-    sourceFolder: '$(directory)/build' 
+    sourceFolder: '$(System.DefaultWorkingDirectory)/$(directory)/build' 
     Contents: '**/*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     cleanTargetFolder: true
