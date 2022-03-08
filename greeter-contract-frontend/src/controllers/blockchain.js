@@ -14,10 +14,11 @@ export const greeterContract = new web3.eth.Contract(
 
 export const getGasPriceEth = async () => {
     const currentGasPrice = await web3.eth.getGasPrice();
-    return web3.utils.fromWei(web3.utils.toBN(currentGasPrice).toString());
+    return web3.utils.fromWei(web3.utils.toBN(currentGasPrice));
 };
 
 export const estimateTransactionGasEth = async (message) => {
     const estimatedGas = await greeterContract.methods.setGreeting(message).estimateGas();
-    return web3.utils.fromWei(web3.utils.toBN(estimatedGas));
-  };
+    const gasPrice = await getGasPriceEth();
+    return web3.utils.toBN(estimatedGas) * gasPrice;
+};

@@ -7,21 +7,21 @@ import {
 
 const GasPrice = () => {
 
-    const [gasPriceEth, setMessage] = useState("No connection to the network.");
+    const [gasPriceEth, setGasPriceEth] = useState("No connection to the network.");
     const [estimatedInteractionGasEth, setEstimateMessage] = useState("No connection to the network.");
 
     //called only once
     useEffect(async () => {
-        const gasPriceInWei = await getGasPriceEth();
+        const gasPriceInEth = await getGasPriceEth();
         const estimatedInteractionGasEth = await estimateTransactionGasEth("this is a test transaction greeting input to estimate");
-        setMessage(gasPriceInWei);
+        setGasPriceEth(gasPriceInEth);
         setEstimateMessage(estimatedInteractionGasEth);
     }, []);
 
     return (
         <div id="container">
-            <p>Current Gas Price (in ETH): {gasPriceEth}</p>
-            <p>Estimated Gas to Submit Transaction (in ETH): {estimatedInteractionGasEth}</p>
+            <p>Current Gas Price (in ETH): {gasPriceEth.toString()}</p>
+            <p>Estimated Gas to Submit Transaction (in ETH): {estimatedInteractionGasEth.toString()}</p>
         </div>
     );
 
