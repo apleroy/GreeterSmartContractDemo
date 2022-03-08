@@ -54,7 +54,7 @@ The **end result** can be seen here: https://greeter-smartcontract-frontend-stag
 
 A few random notes:
 
-**Note 1:** The `create-react-app` is extremely hard to use with the upgrade to version 5.  I ran into tons of issues as there are breaking changes that do not allow use of the `web3` library (which is provided by alchemy).  As a result, I copied over files from Alchemy's repo rather than reluctantly try to figure out the dependency graph fixes needed for `create-react-app` version 5 (I'm not an advanced user of js or react, just trying to get basics working).   For more info: https://github.com/facebook/create-react-app/issues/11756#
+**Note 1:** The `create-react-app` is hard to use with the upgrade to version 5.  I ran into the isssue here as there are breaking changes that do not allow use of the `web3` library (which is provided by alchemy).  As a result, I copied over files from Alchemy's repo rather than reluctantly try to figure out the dependency graph fixes needed for `create-react-app` version 5 (I'm not an advanced user of js or react, and am not setting up a proper 'backend' api for this app - just trying to get basics working).   For more info: https://github.com/facebook/create-react-app/issues/11756#
 
 **Note 2:** I deployed the finalized react site to Azure on a *windows* based app service plan.  This was much easier and I ran into issues with a linux based plan that again I did not want to fix or solve on a basic demo app.
 
