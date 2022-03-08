@@ -1,42 +1,40 @@
-# Advanced Sample Hardhat Project
+# Smart Contract Demo
+This project is a basic smart contract called `Greeter` - which is by default setup when using the hardhat project scaffolding (referenced below).
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+It augments this standard contract with an event emitter which is used in the associated web dapp.
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
+This repo has the code for the contract, code for deployment, and a js file that allows for interacting with the contract after deployment.
 
-Try running some of the following tasks:
+Note that for any deployment or interaction (test) ether will need to be obtained at the appropriate testnet faucet.
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.js
-node scripts/deploy.js
-npx eslint '**/*.js'
-npx eslint '**/*.js' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+The **end result** can be seen here: https://greeter-smartcontract-frontend-stage.azurewebsites.net/
+
+**Smart contract**: https://ropsten.etherscan.io/address/0x663C14C9a59c763D471AAc4368f9CEa6223af39f
+
+## Usage
+
+**Step 1:** clone the repo (the smart contract code is all in this current folder, while the frontend dapp code is all in the adjacent directory at this level)
+**Step 2:** setup an alchemy node for whatever Ethereum testnet you wish to use
+**Step 3:** create a local `.env` file and add in appropriate environment variables. (this is purposefully gitignore'd)
+
+Examples to fill out would be like below: 
+
 ```
-
-# Etherscan verification
-
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
-
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
-
-```shell
-hardhat run --network ropsten scripts/deploy.js
+ETHERSCAN_API_KEY=1234
+ROPSTEN_URL="https://eth-ropsten.alchemyapi.io/v2/<YOUR ALCHHEMY KEY>"
+ROPSTEN_PRIVATE_KEY="<YOUR PRIVATE KEY FOR METAMASK>"
+ROPSTEN_CONTRACT_ADDRESS="<GET ADDRESS AFTER DEPLOY>"
 ```
+After deployment, the address can be used in the `interact.stage.js` file.
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
+Most of the source, usage, and details for this contract can be bets understood following the below links from Hardhat and Alchemy respectively.
 
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
-```
+
+## Hardhat
+
+Follow the instructions here: https://hardhat.org/getting-started/
+
+
+## Alchemy
+
+Follow the tutorials here: https://docs.alchemy.com/alchemy/tutorials/hello-world-smart-contract

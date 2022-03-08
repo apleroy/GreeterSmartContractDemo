@@ -29,6 +29,11 @@ module.exports = {
       accounts:
         process.env.ROPSTEN_PRIVATE_KEY !== undefined ? [process.env.ROPSTEN_PRIVATE_KEY] : [],
     },
+    rinkeby: {
+      url: process.env.RINKEBY_URL || "",
+      accounts:
+        process.env.RINKEBY_PRIVATE_KEY !== undefined ? [process.env.RINKEBY_PRIVATE_KEY] : [],
+    },
     mainnet: {
       url: process.env.MAINNET_URL || "",
       accounts:

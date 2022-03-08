@@ -15,5 +15,4 @@ class Environment extends React.Component {
     }
 };
 
-
 export default Environment;
