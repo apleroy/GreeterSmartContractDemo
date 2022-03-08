@@ -11,8 +11,8 @@ pool:
 
 variables:
   directory: greeter-contract-frontend
-  serviceConnection: dappsmartcontractstage
-  appServiceName: andysmartcontractdappstage
+  serviceConnection: greeter-smartcontract-service-connection
+  appServiceName: greeter-smartcontract-frontend-stage
 
 steps:
 - task: NodeTool@0
@@ -57,7 +57,6 @@ steps:
   displayName: 'Publish Build Artifacts'
   inputs: 
     pathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    ArtifactName: 'www' # output artifact named www
 
 - task: AzureWebApp@1
   inputs:
